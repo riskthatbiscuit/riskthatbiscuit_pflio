@@ -8,7 +8,7 @@ import Projects from './components/projects/projects_page';
 import Extra from '../app/components/extra';
 import { Fira_Code } from 'next/font/google';
 
-export const fira = Fira_Code({
+const fira = Fira_Code({
   subsets: ['latin'],
 });
 
