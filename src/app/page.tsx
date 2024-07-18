@@ -1,5 +1,5 @@
 // Overarching page order
-
+'use client'
 import Navbar from '../app/components/navbar';
 import Hero from '../app/components/hero';
 import Bio from './components/bio/bio_page';
@@ -36,12 +36,10 @@ export default function Home() {
       <div ref={navbarRef}>
         <Navbar />
       </div>{' '}
-      {/* Apply ref to Navbar container */}
       <div
-        className="flex-grow snap-y snap-mandatory overflow-scroll"
+        className="flex-grow snap-y snap-mandatory overflow-scroll mb-2"
         style={{ height: `calc(100vh - ${navbarHeight}px)` }}
       >
-        {/* Components as before */}
         <Hero colorsHero={['#CCCCCC', '#F2F2F2', '#595959', '#7F7F7F']} />
         <Bio colorsBio={['#FCB4AB', '#F4978E', '#F08080', '#FFDAB9']} />
         <Skills colorsSkills={['#BEEF9E', '#A6C36F', '#1E352F', '#828C51']} />
