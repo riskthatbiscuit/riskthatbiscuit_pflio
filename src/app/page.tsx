@@ -32,13 +32,13 @@ export default function Home() {
   }, []); // Empty dependency array means this effect runs once on mount
 
   return (
-    <main className={`${fira.className}`} style={{ height: '100%' }}>
+    <main className={`${fira.className} absolute`} style={{ height: '100%' }}>
       <div ref={navbarRef}>
         <Navbar />
       </div>{' '}
       <div
         className="flex-grow snap-y snap-mandatory overflow-scroll mb-2"
-        style={{ height: `calc(100vh - ${navbarHeight}px)` }}
+        style={{ height: `calc(100% - ${navbarHeight}px)` }}
       >
         <Hero colorsHero={['#CCCCCC', '#F2F2F2', '#595959', '#7F7F7F']} />
         <Bio colorsBio={['#FCB4AB', '#F4978E', '#F08080', '#FFDAB9']} />
