@@ -30,7 +30,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, colors }) => {
         className="card h-full overflow-hidden rounded-lg"
         style={{backgroundColor: colors[0], color:colors[2]}}
       >
-        <Image
+        <img
           src={project.image}
           alt={project.name}
           className="h-16 w-full rounded-t-lg object-cover object-top"

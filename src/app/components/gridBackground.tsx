@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 interface GridBackgroundProps {
   colors: string[];
@@ -17,17 +17,17 @@ export default function GridBackground({
   const probability2 = 0.2;
   const id = `gridPattern-${colors[0]}`
 
-  const intervalTime = 3000;
+  const intervalTime = 1000;
   const [gridSize, setGridSize] = useState(5000);
   const [fillColors, setFillColors] = useState<string[]>(
     new Array(numSquaresX * numSquaresY).fill(colors[2])
   );
 
   // Generate a unique pattern ID for each instance
-  const patternId = `gridPattern-${Math.random().toString(36).substr(2, 9)}`;
+  // const patternId = `gridPattern-${Math.random().toString(36).substr(2, 9)}`;
 
   // Function to update shaded squares and fill colors
-  const updateShadedSquares = () => {
+  const updateShadedSquares = useCallback(() => {
     const newShadedSquares1: number[] = [];
     const newShadedSquares2: number[] = [];
 
@@ -49,18 +49,18 @@ export default function GridBackground({
             : colors[2]
       )
     );
-  };
+  }, [colors, fillColors]);
 
+  
   // Initialize and set interval on component mount
   useEffect(() => {
     const handleResize = () => {
       const newSize =
-        window.innerWidth > 900 ? 200 : window.innerWidth > 400 ? 100 : 50;
+      window.innerWidth > 900 ? 200 : window.innerWidth > 400 ? 100 : 50;
       setGridSize(newSize);
     };
-
+    
     handleResize();
-    updateShadedSquares(); // Initialize immediately on component mount
 
     const intervalId = setInterval(() => {
       handleResize();
