@@ -1,12 +1,14 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from 'next';
+import { Fira_Code } from 'next/font/google';
+import './globals.css';
 
-const inter = Inter({ subsets: ["latin"] });
+const fira = Fira_Code({
+  subsets: ['latin'],
+});
 
 export const metadata: Metadata = {
-  title: "Risk That Biscuit",
-  description: "Software Engineering Portfolio",
+  title: 'Risk That Biscuit',
+  description: 'Software Engineering Portfolio',
 };
 
 export default function RootLayout({
@@ -16,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={fira.className}>{children}</body>
     </html>
   );
 }

@@ -19,7 +19,7 @@ const Button: React.FC<ButtonProps> = ({ message, target, colors }) => {
           });
         }
       }}
-      className="btn z-10 btn-neutral h-8 btn-active btn-sm mx-auto mt-2 mb-4 w-fit text-xs font-thin"
+      className="btn z-10 btn-neutral h-8 btn-active btn-sm mx-auto mt-2 mb-2 w-fit text-xs font-thin"
       style={{background: colors[0], color:colors[2], border:colors[3]}}
     >
       {message}
