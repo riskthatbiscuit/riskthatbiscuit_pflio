@@ -17,11 +17,8 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main className={`${fira.className} w-full`}>
-        <div
-          className="snap-y snap-mandatory overflow-scroll"
-          style={{ height: '100vh' }}
-        >
+      <main className={`${fira.className} w-full`} style={{ height: '100dvh' }}>
+        <div className="snap-y snap-mandatory overflow-scroll">
           <Hero colorsHero={['#CCCCCC', '#F2F2F2', '#595959', '#7F7F7F']} />
           <Bio colorsBio={['#FCB4AB', '#F4978E', '#F08080', '#FFDAB9']} />
           <Skills colorsSkills={['#BEEF9E', '#A6C36F', '#1E352F', '#828C51']} />
