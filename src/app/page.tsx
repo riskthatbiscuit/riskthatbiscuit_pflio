@@ -32,7 +32,7 @@ export default function Home() {
   }, []); // Empty dependency array means this effect runs once on mount
 
   return (
-    <main className={`h-screen ${fira.className}`}>
+    <main className={`${fira.className}`} style={{ height: '100%' }}>
       <div ref={navbarRef}>
         <Navbar />
       </div>{' '}
