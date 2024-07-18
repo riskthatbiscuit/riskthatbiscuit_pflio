@@ -1,5 +1,5 @@
 // Overarching page order
-'use client'
+'use client';
 import Navbar from '../app/components/navbar';
 import Hero from '../app/components/hero';
 import Bio from './components/bio/bio_page';
@@ -18,22 +18,17 @@ export default function Home() {
     <>
       <Navbar />
       <main className={`${fira.className} w-full`}>
-        <div className="snap-y snap-mandatory overflow-scroll" style={{ height: '100dvh' }}>
-          <Hero
-            colorsHero={['#CCCCCC', '#F2F2F2', '#595959', '#7F7F7F']}
-          />
-          <Bio
-            colorsBio={['#FCB4AB', '#F4978E', '#F08080', '#FFDAB9']}
-          />
-          <Skills
-            colorsSkills={['#BEEF9E', '#A6C36F', '#1E352F', '#828C51']}
-          />
+        <div
+          className="snap-y snap-mandatory overflow-scroll"
+          style={{ height: '100vh' }}
+        >
+          <Hero colorsHero={['#CCCCCC', '#F2F2F2', '#595959', '#7F7F7F']} />
+          <Bio colorsBio={['#FCB4AB', '#F4978E', '#F08080', '#FFDAB9']} />
+          <Skills colorsSkills={['#BEEF9E', '#A6C36F', '#1E352F', '#828C51']} />
           <Projects
             colorsProject={['#CAF0F8', '#90E0EF', '#03045E', '#0077B6']}
           />
-          <Extra
-            colorsExtra={['#FFE169', '#EDC531', '#805B10', '#C9A227']}
-          />
+          <Extra colorsExtra={['#FFE169', '#EDC531', '#805B10', '#C9A227']} />
         </div>
       </main>
     </>
