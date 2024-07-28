@@ -4,7 +4,9 @@ import {
   SiTailwindcss,
   SiExpress,
   SiMongodb,
-  SiDjango,
+  SiMysql,
+  SiHandlebarsdotjs,
+  SiHeroku,
   SiPostgresql,
   SiTypescript,
 } from 'react-icons/si';
@@ -30,7 +32,7 @@ export const Projects: Project[] = [
     name: 'Waterfall Finance',
     image: './homeTiles/WaterfallFinance.png',
     stack: [
-      {name: 'Typescript', img: <SiTypescript />},
+      { name: 'Typescript', img: <SiTypescript /> },
       { name: 'React', img: <FaReact /> },
       { name: 'TailwindCSS', img: <SiTailwindcss /> },
     ],
@@ -39,17 +41,17 @@ export const Projects: Project[] = [
     link: 'http://www.waterfall.finance',
   },
   {
-    name: 'Eco Merch Store',
-    image: './homeTiles/emobility.webp',
+    name: 'Tech Talent',
+    image: './homeTiles/tech_talent.png',
     stack: [
-      { name: 'React', img: <FaReact /> },
-      { name: 'Node.js', img: <FaNodeJs /> },
+      { name: 'MySQL', img: <SiMysql /> },
+      { name: 'Handlebars', img: <SiHandlebarsdotjs /> },
       { name: 'Express', img: <SiExpress /> },
-      { name: 'MongoDB', img: <SiMongodb /> },
+      { name: 'Heroku', img: <SiHeroku /> },
     ],
     description:
-      'An e-commerce platform for eco-friendly merchandise, featuring a complete shopping cart and user profiles.',
-    link: 'www.waterfall.finance',
+      'Full stack web application that allows users to browse Dev job listings, save jobs to the database, update status, and add notes.',
+    link: 'https://tech-talent1-4df2fd0f5e90.herokuapp.com/',
   },
   {
     name: 'StudyBuddy',
