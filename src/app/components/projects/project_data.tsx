@@ -37,7 +37,7 @@ export const Projects: Project[] = [
       { name: 'TailwindCSS', img: <SiTailwindcss /> },
     ],
     description:
-      'A front-end website for a finance startup focusing on modern, responsive designs.',
+      'Client driven, live, front-end website for a finance startup focusing on modern, responsive designs.',
     link: 'http://www.waterfall.finance',
   },
   {
@@ -54,17 +54,18 @@ export const Projects: Project[] = [
     link: 'https://tech-talent1-4df2fd0f5e90.herokuapp.com/',
   },
   {
-    name: 'StudyBuddy',
-    image: './homeTiles/Building.jpg',
+    name: 'Employee Tracker',
+    image: './homeTiles/EmployeeTracker.png',
     stack: [
       { name: 'React', img: <FaReact /> },
       { name: 'Node.js', img: <FaNodeJs /> },
       { name: 'Express', img: <SiExpress /> },
-      { name: 'MongoDB', img: <SiMongodb /> },
+      { name: 'MySQL', img: <SiMysql /> },
+      { name: 'TailwindCSS', img: <SiTailwindcss /> },
     ],
     description:
-      'A collaborative platform for students to create and share notes and resources for various subjects.',
-    link: 'www.waterfall.finance',
+      'Employee Tracker is a robust, full-stack web application designed to streamline the management of employee data within an organization.',
+    link: 'https://infinite-waters-93089-7bd83e9457e8.herokuapp.com/',
   },
   {
     name: 'HealthTracker',
