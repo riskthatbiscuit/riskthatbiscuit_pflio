@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useRef, useState, ReactElement } from 'react';
+import React, { useRef, useState, ReactElement, useEffect } from 'react';
 import { useIsVisible } from '@/app/hooks/useIsVisible';
-import GridBackground from '../gridBackground';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Button from '../button';
+import GridBackground from '../gridBackground';
 import {
   FaJava,
   FaPython,
@@ -33,13 +34,32 @@ interface SkillsProps {
   colorsSkills: string[];
 }
 
-
 export default function Projects({ colorsSkills }: SkillsProps): JSX.Element {
   const ref2 = useRef<HTMLDivElement>(null);
   const isVisible = useIsVisible(ref2);
   const [currentStack, setCurrentStack] = useState(0);
-  const color1 = colorsSkills[0]
-  const color2 = colorsSkills[2]
+  const [showArrows, setShowArrows] = useState(false);
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const color1 = colorsSkills[0];
+  const color2 = colorsSkills[2];
+
+  const scrollLeft = () => {
+    if (sliderRef.current) {
+      const sliderWidth = sliderRef.current.offsetWidth;
+      if (sliderWidth) {
+        sliderRef.current?.scrollBy?.({
+          left: -sliderWidth,
+          behavior: 'smooth',
+        });
+      }
+    }
+  };
+  const scrollRight = () => {
+    sliderRef.current.scrollBy({
+      left: sliderRef.current.offsetWidth,
+      behavior: 'smooth',
+    });
+  };
 
   const stacks = [
     {
@@ -72,10 +92,10 @@ export default function Projects({ colorsSkills }: SkillsProps): JSX.Element {
       name: 'Back-end & Data Processing',
       body: 'Building and managing back-end services and data pipelines.',
       skills: [
-        { name: 'Node', icon: <FaNodeJs />, rating: 'good' },
-        { name: 'Express', icon: <SiExpress />, rating: 'good' },
+        { name: 'Node', icon: <FaNodeJs />, rating: 'proficient' },
+        { name: 'Express', icon: <SiExpress />, rating: 'proficient' },
         { name: 'MongoDB', icon: <SiMongodb />, rating: 'proficient' },
-        { name: 'MySQL', icon: <SiMysql />, rating: 'learning' },
+        { name: 'MySQL', icon: <SiMysql />, rating: 'good' },
         { name: 'Kafka', icon: <SiApachekafka />, rating: 'learning' },
       ],
       bgColor: color1,
@@ -85,8 +105,8 @@ export default function Projects({ colorsSkills }: SkillsProps): JSX.Element {
       name: 'Cloud, DevOps & Infrastructure',
       body: 'Skilled in cloud services, infrastructure as code, and version control systems.',
       skills: [
-        { name: 'AWS', icon: <FaAws />, rating: 'proficient' },
-        { name: 'Terraform', icon: <SiTerraform />, rating: 'good' },
+        { name: 'AWS', icon: <FaAws />, rating: 'learning' },
+        { name: 'Terraform', icon: <SiTerraform />, rating: 'learning' },
         { name: 'GitHub', icon: <FaGithub />, rating: 'proficient' },
         { name: 'GitLab', icon: <FaGitlab />, rating: 'learning' },
       ],
@@ -112,8 +132,8 @@ export default function Projects({ colorsSkills }: SkillsProps): JSX.Element {
       name: 'Database Management & Streaming',
       body: 'Handling large-scale data management and real-time data streaming.',
       skills: [
-        { name: 'PostgreSQL', icon: <SiPostgresql />, rating: 'proficient' },
-        { name: 'Snowflake', icon: <SiSnowflake />, rating: 'good' },
+        { name: 'PostgreSQL', icon: <SiPostgresql />, rating: 'learning' },
+        { name: 'Snowflake', icon: <SiSnowflake />, rating: 'learning' },
         { name: '', icon: '', rating: 'good' },
         { name: '', icon: '', rating: 'good' },
       ],
@@ -134,80 +154,81 @@ export default function Projects({ colorsSkills }: SkillsProps): JSX.Element {
         return 'bg-gray-500'; // Default color
     }
   }
-  const handleNextClick = () => {
-    setCurrentStack((prevStack) => (prevStack + 1) % stacks.length);
-  };
-
-  const handlePrevClick = () => {
-    setCurrentStack((prevStack) => {
-      if (prevStack === 0) {
-        return stacks.length - 1;
-      } else {
-        return prevStack - 1;
-      }
-    });
-  };
 
   return (
-    <div id="skills">
+    <div
+      id="skills"
+      onMouseEnter={() => setShowArrows(true)}
+      onMouseLeave={() => setShowArrows(false)}
+    >
       <GridBackground colors={colorsSkills}>
         <div
           ref={ref2}
-          className={`${isVisible ? 'w-full animate-fade-left animate-duration-[2000ms] animate-once' : ''} h-full max-w-3xl snap-start flex-col px-2 md:mx-8 lg:flex-row`}
+          className={`${isVisible ? 'w-full animate-fade-left animate-duration-[2000ms] animate-once' : ''} h-full max-w-sm snap-start flex-col px-2 md:mx-8 md:max-w-2xl lg:max-w-3xl lg:flex-row`}
         >
           <div
             className="mt-20 flex flex-col text-xs md:text-base"
             style={{ height: 'calc(100% - 100px)' }}
           >
-            <div className="flex h-1/6 flex-col justify-end">
+            <div className="flex h-1/6 flex-col justify-end ">
               <h1 className={`text-3xl font-bold md:text-5xl `}>Skills</h1>
               <p className="pt-2 md:pt-8">
                 These are the skills I&apos;ve been developing
               </p>
             </div>
             <div style={{ height: 'calc(100% - 100px)' }}>
-              <div className="relative mx-2 mt-4 flex h-5/6 justify-center overflow-hidden">
+              <div
+                className="flex space-x-4 space-y-4 overflow-x-scroll"
+                ref={sliderRef}
+              >
                 {stacks.map((stack, index) => (
                   <div
                     key={stack.name}
-                    className={`absolute flex h-5/6 w-full flex-col rounded-md p-4 `}
+                    className="group relative mt-4 flex flex-col rounded-md min-w-56 bg-opacity-50 p-4"
                     style={{
-                      zIndex:
-                        index === currentStack
-                          ? 10
-                          : index > currentStack
-                            ? -index
-                            : index,
-                      transform: `translateY(${10 * index}px)`,
                       backgroundColor: stack.bgColor,
                       color: stack.textColor,
                     }}
                   >
-                    <div onClick={handlePrevClick} className="-mt-8">
-                      <h2 className="mt-8 border-b-2 border-neutral text-xl">
-                        {stack.name}
-                      </h2>
-                      <p className="text-thin mt-2 ">{stack.body}</p>
-                    </div>
-                    <div onClick={handleNextClick} className="-mb-8 h-full">
-                      <div className="skills-list mt-2 flex h-full flex-col justify-between pb-10 ">
-                        {stack.skills.map((skill, index) => (
-                          <div
-                            key={`${stack.name}-${index}`}
-                            className={`skill flex items-center justify-between rounded-md px-6 text-xl ${getRatingColor(skill.rating)} bg-opacity-50`}
-                          >
-                            <span className="text-sm">{skill.name}</span>
-                            <span className="text-2xl">{skill.icon}</span>
-                          </div>
-                        ))}
-                      </div>
+                    <h2 className="mt-8 border-b-2 border-neutral text-xl">
+                      {stack.name}
+                    </h2>
+                    <p className="text-thin mt-2">{stack.body}</p>
+
+                    <div className="skills-list mt-2 flex flex-col justify-between pb-10">
+                      {stack.skills.map((skill, index) => (
+                        <div
+                          key={`${stack.name}-${index}`}
+                          className={`skill my-1 flex items-center justify-between rounded-md px-6 text-xl ${getRatingColor(skill.rating)} bg-opacity-50`}
+                        >
+                          <span className="text-sm">{skill.name}</span>
+                          <span className="text-2xl">{skill.icon}</span>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 ))}
               </div>
-              <div
-                className={`mx-2 my-2 flex items-center justify-between gap-2 rounded-md bg-white bg-opacity-30 p-1 text-neutral ${isVisible ? 'animate-fade-up animate-delay-[2000ms] animate-duration-[2000ms] animate-once' : ''}`}
-              >
+
+              {showArrows && (
+                <>
+                  <button
+                    className="absolute left-5 top-1/2 z-10 flex size-12 -translate-y-1/2 items-center justify-center rounded-full bg-black bg-opacity-50 text-white hover:bg-opacity-75"
+                    onClick={scrollLeft}
+                  >
+                    <ChevronLeft size={24} />
+                  </button>
+
+                  <button
+                    className="absolute right-5 top-1/2 z-10 flex size-12 -translate-y-1/2 items-center justify-center rounded-full bg-black bg-opacity-50 text-white hover:bg-opacity-75"
+                    onClick={scrollRight}
+                  >
+                    <ChevronRight size={24} />
+                  </button>
+                </>
+              )}
+
+              <div className="mx-2 my-2 flex items-center justify-between gap-2 rounded-md bg-white bg-opacity-30 p-1 text-neutral">
                 <p>Key:</p>
                 <button className="h-8 rounded-md bg-green-500 bg-opacity-50 px-2">
                   I&apos;m great at
@@ -221,8 +242,8 @@ export default function Projects({ colorsSkills }: SkillsProps): JSX.Element {
               </div>
             </div>
             <Button
-              message="Things I've built"
-              target="projects"
+              message="Whats next?"
+              target="extra"
               colors={colorsSkills}
             />
           </div>

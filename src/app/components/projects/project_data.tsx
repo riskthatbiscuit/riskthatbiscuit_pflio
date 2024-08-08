@@ -64,21 +64,22 @@ export const Projects: Project[] = [
       { name: 'TailwindCSS', img: <SiTailwindcss /> },
     ],
     description:
-      'Employee Tracker is a robust, full-stack web application designed to streamline the management of employee data within an organization.',
+      'A RESTful application, Employee Tracker is a robust, full-stack web application designed to streamline the management of employee data within an organization.',
     link: 'https://infinite-waters-93089-7bd83e9457e8.herokuapp.com/',
   },
   {
-    name: 'HealthTracker',
+    name: 'Op Risk Dashboard',
     image: './homeTiles/manufacturing.webp',
     stack: [
+      { name: 'MongoDB', img: <SiMongodb /> },
       { name: 'React', img: <FaReact /> },
+      { name: 'TailwindCSS', img: <SiTailwindcss /> },
       { name: 'Node.js', img: <FaNodeJs /> },
       { name: 'Express', img: <SiExpress /> },
-      { name: 'MongoDB', img: <SiMongodb /> },
     ],
     description:
-      'A web application to track daily health activities and calorie intake, integrating with various fitness APIs.',
-    link: 'www.waterfall.finance',
+      'A simple dahsboard to track operational risk events and their impact on the organization.',
+    link: 'https://op-risk-dashboard-git-main-riskthatbiscuits-projects.vercel.app/',
   },
   {
     name: 'TechEvents',
