@@ -30,8 +30,8 @@ export default function Projects({colorsProject}:ProjectProps): JSX.Element {
                 These are the some things I&apos;ve built
               </p>
             </div>
-            <div style={{ height: 'calc(100% - 100px)' }}>
-              <div className="flex flex-col overflow-y-hidden">
+            <div style={{ height: 'calc(100% - 170px)' }}>
+              <div className="flex flex-col max-h-full">
                 <ProjectsDisplay colors={colorsProject} />
               </div>
             </div>

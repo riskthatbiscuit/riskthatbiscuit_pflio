@@ -16,7 +16,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, colors }) => {
   const [isModalOpen, setModalOpen] = useState(false);
 
   const showModal = () => {
-    setModalOpen(true);
+    if (project.status !== 'In Development') {
+      setModalOpen(true);
+    }
   };
 
   const closeModal = () => {
@@ -24,19 +26,25 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, colors }) => {
   };
 
   return (
-    <div className="w-1/2 cursor-pointer overflow-hidden  p-1">
+    <div className="max-h-56 w-1/2 cursor-pointer overflow-hidden p-1">
       <div
         onClick={showModal}
         className="card h-full overflow-hidden rounded-lg"
         style={{ backgroundColor: colors[0], color: colors[2] }}
       >
-        <img
-          src={project.image}
-          alt={project.name}
-          className="h-24 w-full rounded-t-lg object-cover object-top"
-        />
+        {project.status === 'In Development' ? (
+          <div className="object-top left-0 h-24 w-full rounded-t-lg bg-yellow-500 py-1 text-center text-white">
+            In Development
+          </div>
+        ) : (
+          <img
+            src={project.image}
+            alt={project.name}
+            className="h-24 w-full rounded-t-lg object-cover object-top"
+          />
+        )}
         <div className="p-4">
-          <div className="flex justify-between mb-2">
+          <div className="mb-2 flex justify-between">
             <h3 className="font-bold">{project.name}</h3>
             <div className="item-start mt-1 flex justify-end">
               {project.stack.map((tech, index) => (
@@ -60,7 +68,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, colors }) => {
 
 const ProjectDisplay: React.FC<ProjectDisplayProps> = ({ colors }) => {
   return (
-    <div className="flex overflow-y-scroll flex-wrap justify-center  max-h-fit">
+    <div className="flex max-h-full flex-wrap justify-center overflow-scroll">
       {Projects.map((project, index) => (
         <ProjectCard key={index} project={project} colors={colors} />
       ))}

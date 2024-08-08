@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaReact, FaNodeJs, FaPython, FaBootstrap } from 'react-icons/fa';
+import { FaReact, FaNodeJs, FaPython, FaBootstrap,  } from 'react-icons/fa';
 import {
   SiTailwindcss,
   SiExpress,
@@ -7,6 +7,7 @@ import {
   SiMysql,
   SiHandlebarsdotjs,
   SiHeroku,
+  SiDjango,
   SiPostgresql,
   SiTypescript,
 } from 'react-icons/si';
@@ -24,6 +25,7 @@ export interface Project {
   stack: StackItem[];
   description: string;
   link: string;
+  status?: string;
 }
 
 // Projects array
@@ -80,19 +82,21 @@ export const Projects: Project[] = [
     description:
       'A simple dahsboard to track operational risk events and their impact on the organization.',
     link: 'https://op-risk-dashboard-git-main-riskthatbiscuits-projects.vercel.app/',
+    status: 'In Development',
   },
   {
-    name: 'TechEvents',
+    name: 'Personal Portfolio Dashboard including VaR calculations',
     image: './homeTiles/agriculture.jpeg',
     stack: [
+      { name: 'Python', img: <FaPython/> },
+      { name: 'Django', img: <SiDjango /> },
       { name: 'React', img: <FaReact /> },
-      { name: 'Node.js', img: <FaNodeJs /> },
-      { name: 'Express', img: <SiExpress /> },
       { name: 'MongoDB', img: <SiMongodb /> },
     ],
     description:
-      'A portal for organizing and finding technology-related events, workshops, and meetups around the globe.',
+      'A personal financial dashboard that includes Value at Risk calculations for a portfolio of assets.',
     link: 'www.waterfall.finance',
+    status: 'In Development',
   },
   {
     name: 'PetRescue',
@@ -106,5 +110,6 @@ export const Projects: Project[] = [
     description:
       'An application to facilitate pet adoption, featuring listings, shelters, and pet matching functionalities.',
     link: 'www.waterfall.finance',
+    status: 'In Development',
   },
 ];
