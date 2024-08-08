@@ -24,27 +24,29 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, colors }) => {
   };
 
   return (
-    <div className="w-1/2 cursor-pointer overflow-hidden p-1">
+    <div className="w-1/2 cursor-pointer overflow-hidden  p-1">
       <div
         onClick={showModal}
         className="card h-full overflow-hidden rounded-lg"
-        style={{backgroundColor: colors[0], color:colors[2]}}
+        style={{ backgroundColor: colors[0], color: colors[2] }}
       >
         <img
           src={project.image}
           alt={project.name}
-          className="h-16 w-full rounded-t-lg object-cover object-top"
+          className="h-24 w-full rounded-t-lg object-cover object-top"
         />
         <div className="p-4">
-          <h3 className="font-bold">{project.name}</h3>
-          <div className="item-start mt-1 flex justify-end">
-            {project.stack.map((tech, index) => (
-              <span key={index} className="icon px-1">
-                {tech.img}
-              </span>
-            ))}
+          <div className="flex justify-between mb-2">
+            <h3 className="font-bold">{project.name}</h3>
+            <div className="item-start mt-1 flex justify-end">
+              {project.stack.map((tech, index) => (
+                <span key={index} className="icon px-1">
+                  {tech.img}
+                </span>
+              ))}
+            </div>
           </div>
-          <p className="hidden text-sm  hover:block md:block">
+          <p className="hidden text-xs hover:block md:block">
             {project.description}
           </p>
         </div>
@@ -58,7 +60,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, colors }) => {
 
 const ProjectDisplay: React.FC<ProjectDisplayProps> = ({ colors }) => {
   return (
-    <div className="flex h-full flex-wrap justify-center">
+    <div className="flex overflow-y-scroll flex-wrap justify-center  max-h-fit">
       {Projects.map((project, index) => (
         <ProjectCard key={index} project={project} colors={colors} />
       ))}

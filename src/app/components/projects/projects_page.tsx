@@ -31,7 +31,7 @@ export default function Projects({colorsProject}:ProjectProps): JSX.Element {
               </p>
             </div>
             <div style={{ height: 'calc(100% - 100px)' }}>
-              <div className="flex h-full flex-col">
+              <div className="flex flex-col overflow-y-hidden">
                 <ProjectsDisplay colors={colorsProject} />
               </div>
             </div>

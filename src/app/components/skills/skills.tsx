@@ -55,10 +55,12 @@ export default function Projects({ colorsSkills }: SkillsProps): JSX.Element {
     }
   };
   const scrollRight = () => {
-    sliderRef.current.scrollBy({
-      left: sliderRef.current.offsetWidth,
-      behavior: 'smooth',
-    });
+    if (sliderRef.current) {
+      sliderRef.current.scrollBy({
+        left: sliderRef.current.offsetWidth,
+        behavior: 'smooth',
+      });
+    }
   };
 
   const stacks = [
@@ -190,7 +192,7 @@ export default function Projects({ colorsSkills }: SkillsProps): JSX.Element {
                       color: stack.textColor,
                     }}
                   >
-                    <h2 className="mt-8 border-b-2 border-neutral text-xl">
+                    <h2 className="mt-8 border-b-2 text-xl" style={{borderColor: stack.textColor}}>
                       {stack.name}
                     </h2>
                     <p className="text-thin mt-2">{stack.body}</p>
@@ -243,7 +245,7 @@ export default function Projects({ colorsSkills }: SkillsProps): JSX.Element {
             </div>
             <Button
               message="Whats next?"
-              target="extra"
+              target="projects"
               colors={colorsSkills}
             />
           </div>
