@@ -70,6 +70,17 @@ export const Projects: Project[] = [
     link: 'https://infinite-waters-93089-7bd83e9457e8.herokuapp.com/',
   },
   {
+    name: 'Texas Holdem Calculator',
+    image: './homeTiles/Cards.jpg',
+    stack: [
+      { name: 'Python', img: <FaPython /> },
+      { name: 'MySQL', img: <SiMysql /> },
+    ],
+    description:
+      'An application to calculate the odds of winning a hand in Texas Holdem Poker based on the actions of other players, the cards on the table, and the cards in the players hand.',
+    link: '',
+  },
+  {
     name: 'Op Risk Dashboard',
     image: './homeTiles/manufacturing.webp',
     stack: [
@@ -95,20 +106,6 @@ export const Projects: Project[] = [
     ],
     description:
       'A personal financial dashboard that includes Value at Risk calculations for a portfolio of assets.',
-    link: 'www.waterfall.finance',
-    status: 'In Development',
-  },
-  {
-    name: 'PetRescue',
-    image: './homeTiles/waste.jpeg',
-    stack: [
-      { name: 'React', img: <FaReact /> },
-      { name: 'Node.js', img: <FaNodeJs /> },
-      { name: 'Express', img: <SiExpress /> },
-      { name: 'MongoDB', img: <SiMongodb /> },
-    ],
-    description:
-      'An application to facilitate pet adoption, featuring listings, shelters, and pet matching functionalities.',
     link: 'www.waterfall.finance',
     status: 'In Development',
   },
