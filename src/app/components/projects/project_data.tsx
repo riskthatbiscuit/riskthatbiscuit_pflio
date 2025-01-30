@@ -31,8 +31,8 @@ export interface Project {
 // Projects array
 export const Projects: Project[] = [
   {
-    name: 'Waterfall Finance',
-    image: './homeTiles/WaterfallFinance.png',
+    name: 'Tegro Partners',
+    image: './homeTiles/TegroPartners.png',
     stack: [
       { name: 'Typescript', img: <SiTypescript /> },
       { name: 'React', img: <FaReact /> },
@@ -40,7 +40,7 @@ export const Projects: Project[] = [
     ],
     description:
       'Client driven, live, front-end website for a finance startup focusing on modern, responsive designs.',
-    link: 'http://www.waterfall.finance',
+    link: 'http://www.tegro.partners',
   },
   {
     name: 'Tech Talent',

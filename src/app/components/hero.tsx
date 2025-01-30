@@ -12,7 +12,7 @@ interface HeroProps {
 export default function Hero({ colorsHero }: HeroProps): JSX.Element {
   const [delta, setDelta] = useState(300 - Math.random() * 100);
   const [text, setText] = useState('Risk Manager');
-  const toRotate = ['Risk Manager', 'Software Engineer'];
+  const toRotate = ['Risk Manager', 'Problem Solver'];
   const [loopNum, setLoopNum] = useState(0);
   const [isDeleting, setIsDeleting] = useState(true);
   const [isFinished, setIsFinished] = useState(false);
