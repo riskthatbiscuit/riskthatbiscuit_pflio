@@ -27,7 +27,7 @@ const Modal: React.FC<ModalProps> = ({ project, colors, closeModal }) => {
             className="h-48 w-full rounded-t-lg object-cover object-top"
           />
           <div className="p-4">
-            <h3 className="mb-2 text-lg font-bold">{project.name}</h3>3
+            <h3 className="mb-2 text-lg font-bold">{project.name}</h3>
             <p className="py-2">{project.description}</p>
             <h4 className="mt-2 font-semibold">Tech Stack:</h4>
             <ul className="list-inside list-disc">
