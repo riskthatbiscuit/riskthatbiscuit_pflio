@@ -11,12 +11,9 @@ export default function Hero({ colorsHero }: HeroProps): JSX.Element {
   return (
     <div id="hero">
       <GridBackground colors={colorsHero}>
-        <div className="max-w-3xl animate-fade px-4 text-left animate-duration-[2000ms]">
-          <div className="flex max-w-2xl flex-col gap-5">
+        <div className="max-w-3xl animate-fade px-4 text-center animate-duration-[2000ms]">
+          <div className="flex max-w-2xl flex-col items-center gap-5">
             <div className="space-y-3">
-              <p className="text-sm font-semibold uppercase tracking-wider text-neutral-700">
-                Casey McGrath
-              </p>
               <h1 className="text-4xl font-bold leading-tight md:text-6xl">
                 Risk manager turned software engineer.
               </h1>
@@ -25,7 +22,7 @@ export default function Hero({ colorsHero }: HeroProps): JSX.Element {
                 judgment of a decade spent inside global risk teams.
               </p>
             </div>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap justify-center gap-3">
               <Button
                 message="View projects"
                 target="projects"

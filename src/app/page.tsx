@@ -13,6 +13,7 @@ export default function Home() {
       <Navbar />
       <main className="w-full">
         <div
+          id="page-scroll"
           className="snap-y snap-mandatory overflow-scroll"
           style={{ height: '100dvh' }}
         >

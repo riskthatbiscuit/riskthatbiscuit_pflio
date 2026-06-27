@@ -7,18 +7,21 @@ interface ButtonProps {
 }
 
 const Button: React.FC<ButtonProps> = ({ message, target, colors }) => {
+  const scrollToSection = () => {
+    const container = document.getElementById('page-scroll');
+    const section = document.getElementById(target);
+
+    if (container && section) {
+      container.scrollTo({
+        top: section.offsetTop,
+        behavior: 'smooth',
+      });
+    }
+  };
+
   return (
     <button
-      onClick={() => {
-        const skills = document.getElementById(target);
-        if (skills) {
-          skills.scrollIntoView({
-            behavior: 'smooth',
-            block: 'end',
-            inline: 'center',
-          });
-        }
-      }}
+      onClick={scrollToSection}
       className="z-10 my-2 h-10 w-fit rounded-md border px-4 text-sm font-semibold shadow-sm transition hover:brightness-95"
       style={{
         background: colors[0],

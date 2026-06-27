@@ -105,7 +105,9 @@ export default function GridBackground({
           <rect width="100%" height="100%" fill={`url(#${id})`} />
         </svg>
       </div>
-      <div className="relative z-10 h-full">{children}</div>
+      <div className="relative z-10 flex h-full w-full items-center justify-center">
+        {children}
+      </div>
     </div>
   );
 }

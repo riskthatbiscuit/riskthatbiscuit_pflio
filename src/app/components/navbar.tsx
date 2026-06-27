@@ -8,10 +8,29 @@ import {
 import { HiMenu, HiX } from 'react-icons/hi';
 
 export default function NavBar() {
+  const scrollToSection = (target: string) => {
+    const container = document.getElementById('page-scroll');
+    const section = document.getElementById(target);
+
+    if (container && section) {
+      container.scrollTo({
+        top: section.offsetTop,
+        behavior: 'smooth',
+      });
+    }
+  };
+
+  const navItems = [
+    { label: 'Story', target: 'bio' },
+    { label: 'Skills', target: 'skills' },
+    { label: 'Projects', target: 'projects' },
+    { label: 'Next', target: 'extra' },
+  ];
+
   return (
     <Disclosure
       as="nav"
-      className="absolute z-10 w-full bg-white bg-opacity-80"
+      className="absolute z-50 w-full bg-white bg-opacity-80"
     >
       {({ open }) => (
         <>
@@ -24,30 +43,16 @@ export default function NavBar() {
                   </a>
                 </div>
                 <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-                  <a
-                    href="#bio"
-                    className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
-                  >
-                    Story
-                  </a>
-                  <a
-                    href="#skills"
-                    className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
-                  >
-                    Skills
-                  </a>
-                  <a
-                    href="#projects"
-                    className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
-                  >
-                    Projects
-                  </a>
-                  <a
-                    href="#extra"
-                    className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
-                  >
-                    Next
-                  </a>
+                  {navItems.map((item) => (
+                    <button
+                      key={item.target}
+                      type="button"
+                      onClick={() => scrollToSection(item.target)}
+                      className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                    >
+                      {item.label}
+                    </button>
+                  ))}
                 </div>
               </div>
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -67,35 +72,17 @@ export default function NavBar() {
 
           <DisclosurePanel className="sm:hidden">
             <div className="space-y-1 pb-4 pt-2 opacity-100">
-              {/* Current: "bg-indigo-50 border-indigo-500 text-indigo-700", Default: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700" */}
-              <DisclosureButton
-                as="a"
-                href="#bio"
-                className="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
-              >
-                Story
-              </DisclosureButton>
-              <DisclosureButton
-                as="a"
-                href="#skills"
-                className="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
-              >
-                Skills
-              </DisclosureButton>
-              <DisclosureButton
-                as="a"
-                href="#projects"
-                className="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
-              >
-                Projects
-              </DisclosureButton>
-              <DisclosureButton
-                as="a"
-                href="#extra"
-                className="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
-              >
-                Next
-              </DisclosureButton>
+              {navItems.map((item) => (
+                <DisclosureButton
+                  key={item.target}
+                  as="button"
+                  type="button"
+                  onClick={() => scrollToSection(item.target)}
+                  className="block w-full border-l-4 border-transparent py-2 pl-3 pr-4 text-left text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
+                >
+                  {item.label}
+                </DisclosureButton>
+              ))}
             </div>
           </DisclosurePanel>
         </>
