@@ -1,7 +1,5 @@
 'use client';
 
-import React, { useRef, useState, useEffect } from 'react';
-import { useIsVisible } from '@/app/hooks/useIsVisible';
 import Button from './button';
 import GridBackground from './gridBackground';
 
@@ -10,62 +8,30 @@ interface HeroProps {
 }
 
 export default function Hero({ colorsHero }: HeroProps): JSX.Element {
-  const [delta, setDelta] = useState(300 - Math.random() * 100);
-  const [text, setText] = useState('Risk Manager');
-  const toRotate = ['Risk Manager', 'Problem Solver'];
-  const [loopNum, setLoopNum] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(true);
-  const [isFinished, setIsFinished] = useState(false);
-  const period = 2000;
-
-  useEffect(() => {
-    if (!isFinished) {
-      let ticker = setInterval(() => {
-        tick();
-      }, delta);
-
-      return () => clearInterval(ticker);
-    }
-  }, [text, isDeleting, delta, isFinished]);
-
-  const tick = () => {
-    let i = loopNum % toRotate.length;
-    let fullText = toRotate[i];
-    let updatedText = isDeleting
-      ? fullText.substring(0, text.length - 1)
-      : fullText.substring(0, text.length + 1);
-
-    setText(updatedText);
-
-    if (isDeleting && updatedText === '') {
-      setIsDeleting(false);
-      setLoopNum(loopNum + 1);
-      setDelta(300 - Math.random() * 100);
-    } else if (!isDeleting && updatedText === fullText) {
-      if (i === 0) {
-        setTimeout(() => {
-          setIsDeleting(true);
-          setDelta(50);
-        }, period);
-      }
-    } else if (!isDeleting && i === 1 && updatedText === fullText) {
-      setIsFinished(true);
-    }
-  };
-
   return (
     <div id="hero">
       <GridBackground colors={colorsHero}>
-        <div
-          className={`animate-fade px-2 text-center animate-duration-[2000ms] max-w-3xl`}
-        >
-          <div className="flex max-w-md flex-col gap-4">
-            <div className="h-36 text-left">
-              <h1 className="text-4xl">{`Hi I'm Casey,`}</h1>
-              <span className="text-4xl">a {text}</span>
+        <div className="max-w-3xl animate-fade px-4 text-left animate-duration-[2000ms]">
+          <div className="flex max-w-2xl flex-col gap-5">
+            <div className="space-y-3">
+              <p className="text-sm font-semibold uppercase tracking-wider text-neutral-700">
+                Casey McGrath
+              </p>
+              <h1 className="text-4xl font-bold leading-tight md:text-6xl">
+                Risk manager turned software engineer.
+              </h1>
+              <p className="max-w-xl text-base leading-7 md:text-xl">
+                I build financial, operational-risk, and data tools with the
+                judgment of a decade spent inside global risk teams.
+              </p>
             </div>
-            <div>
-              <Button message="About Me" target="bio" colors={colorsHero} />
+            <div className="flex flex-wrap gap-3">
+              <Button
+                message="View projects"
+                target="projects"
+                colors={colorsHero}
+              />
+              <Button message="My story" target="bio" colors={colorsHero} />
             </div>
           </div>
         </div>

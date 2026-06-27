@@ -12,7 +12,7 @@ interface BioProps {
   colorsBio: string[];
 }
 
-export default function Bio({colorsBio}:BioProps): JSX.Element {
+export default function Bio({ colorsBio }: BioProps): JSX.Element {
   const ref1 = useRef<HTMLDivElement>(null);
   const isVisible = useIsVisible(ref1);
 
@@ -28,17 +28,15 @@ export default function Bio({colorsBio}:BioProps): JSX.Element {
             style={{ height: 'calc(100% - 100px)' }}
           >
             <div className="flex h-1/6 flex-col justify-end ">
-              <h1 className={`text-3xl font-bold h-min-full md:text-5xl`}>My Story</h1>{' '}
+              <h1 className="h-min-full text-3xl font-bold md:text-5xl">
+                My Story
+              </h1>
             </div>
             <div style={{ height: 'calc(100% - 100px)' }}>
               <Story />
               <StoryDropdowns colors={colorsBio} />
             </div>
-            <Button
-              message="Skills I'm learning"
-              target="skills"
-              colors={colorsBio}
-            />
+            <Button message="Skills" target="skills" colors={colorsBio} />
           </div>
         </div>
       </GridBackground>

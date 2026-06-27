@@ -16,9 +16,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, colors }) => {
   const [isModalOpen, setModalOpen] = useState(false);
 
   const showModal = () => {
-    if (project.status !== 'In Development') {
-      setModalOpen(true);
-    }
+    setModalOpen(true);
   };
 
   const closeModal = () => {
@@ -32,17 +30,21 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, colors }) => {
         className="card h-full overflow-hidden rounded-lg"
         style={{ backgroundColor: colors[0], color: colors[2] }}
       >
-        {project.status === 'In Development' ? (
-          <div className="object-top left-0 h-24 w-full rounded-t-lg bg-yellow-500 py-1 text-center text-white">
-            In Development
-          </div>
-        ) : (
-          <img
+        <div className="relative">
+          <Image
             src={project.image}
             alt={project.name}
+            width={480}
+            height={180}
+            unoptimized
             className="h-24 w-full rounded-t-lg object-cover object-top"
           />
-        )}
+          {project.status && (
+            <span className="absolute left-2 top-2 rounded bg-yellow-500 px-2 py-1 text-xs font-semibold text-white">
+              {project.status}
+            </span>
+          )}
+        </div>
         <div className="p-4">
           <div className="mb-2 flex justify-between">
             <h3 className="font-bold">{project.name}</h3>
@@ -54,7 +56,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, colors }) => {
               ))}
             </div>
           </div>
-          <p className="hidden text-xs hover:block md:block">
+          <p className="hidden text-xs leading-5 hover:block md:block">
             {project.description}
           </p>
         </div>

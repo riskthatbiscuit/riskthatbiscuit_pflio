@@ -1,7 +1,7 @@
 // Modal.tsx
 import React from 'react';
 import { Project } from './project_data';
-// import Image from 'next/image';
+import Image from 'next/image';
 
 interface ModalProps {
   project: Project;
@@ -21,9 +21,12 @@ const Modal: React.FC<ModalProps> = ({ project, colors, closeModal }) => {
             color: colors[2],
           }}
         >
-          <img
+          <Image
             src={project.image}
             alt={project.name}
+            width={720}
+            height={280}
+            unoptimized
             className="h-48 w-full rounded-t-lg object-cover object-top"
           />
           <div className="p-4">
@@ -35,16 +38,28 @@ const Modal: React.FC<ModalProps> = ({ project, colors, closeModal }) => {
                 <li key={index}>{tech.name}</li>
               ))}
             </ul>
-            {project.link && (
-              <div className="mt-4">
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-500 underline"
-                >
-                  {project.link}
-                </a>
+            {(project.link || project.repo) && (
+              <div className="mt-4 flex flex-wrap gap-3">
+                {project.link && (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-semibold text-blue-600 underline"
+                  >
+                    Live site
+                  </a>
+                )}
+                {project.repo && (
+                  <a
+                    href={project.repo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-semibold text-blue-600 underline"
+                  >
+                    Source code
+                  </a>
+                )}
               </div>
             )}
           </div>

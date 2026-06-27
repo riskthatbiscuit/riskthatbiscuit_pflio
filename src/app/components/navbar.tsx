@@ -1,6 +1,5 @@
 'use client';
 
-import { Fragment } from 'react';
 import {
   Disclosure,
   DisclosureButton,
@@ -8,15 +7,11 @@ import {
 } from '@headlessui/react';
 import { HiMenu, HiX } from 'react-icons/hi';
 
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ');
-}
-
 export default function NavBar() {
   return (
     <Disclosure
       as="nav"
-      className="w-full z-10 absolute bg-white bg-opacity-80"
+      className="absolute z-10 w-full bg-white bg-opacity-80"
     >
       {({ open }) => (
         <>
@@ -25,7 +20,7 @@ export default function NavBar() {
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start md:justify-between">
                 <div className="flex flex-shrink-0 items-center">
                   <a className="text-black" href="">
-                    Risk That Biscuit
+                    Casey McGrath
                   </a>
                 </div>
                 <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
@@ -99,7 +94,7 @@ export default function NavBar() {
                 href="#extra"
                 className="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
               >
-                Extra
+                Next
               </DisclosureButton>
             </div>
           </DisclosurePanel>

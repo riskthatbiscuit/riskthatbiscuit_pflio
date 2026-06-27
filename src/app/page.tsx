@@ -1,23 +1,17 @@
-// Overarching page order
 'use client';
+
 import Navbar from '../app/components/navbar';
 import Hero from '../app/components/hero';
 import Bio from './components/bio/bio_page';
 import Skills from './components/skills/skills';
 import Projects from './components/projects/projects_page';
 import Extra from '../app/components/extra';
-import { Fira_Code } from 'next/font/google';
-import { useEffect, useRef, useState } from 'react';
-
-const fira = Fira_Code({
-  subsets: ['latin'],
-});
 
 export default function Home() {
   return (
     <>
       <Navbar />
-      <main className={`${fira.className} w-full`}>
+      <main className="w-full">
         <div
           className="snap-y snap-mandatory overflow-scroll"
           style={{ height: '100dvh' }}
@@ -34,6 +28,3 @@ export default function Home() {
     </>
   );
 }
-
-// Major 1, Major2, Background, Line
-// Light, Light, Dark, Medium

@@ -10,7 +10,7 @@ interface ProjectProps {
   colorsProject: string[];
 }
 
-export default function Projects({colorsProject}:ProjectProps): JSX.Element {
+export default function Projects({ colorsProject }: ProjectProps): JSX.Element {
   const ref1 = useRef<HTMLDivElement>(null);
   const isVisible = useIsVisible(ref1);
   return (
@@ -25,18 +25,18 @@ export default function Projects({colorsProject}:ProjectProps): JSX.Element {
             style={{ height: 'calc(100% - 100px)' }}
           >
             <div className="flex h-1/6 flex-col justify-end">
-              <h1 className={`text-3xl font-bold md:text-5xl `}>My Projects</h1>
+              <h1 className="text-3xl font-bold md:text-5xl">Projects</h1>
               <p className="pt-2 md:pt-8">
-                These are the some things I&apos;ve built
+                Selected builds across finance, risk, and full-stack web apps.
               </p>
             </div>
             <div style={{ height: 'calc(100% - 170px)' }}>
-              <div className="flex flex-col max-h-full">
+              <div className="flex max-h-full flex-col">
                 <ProjectsDisplay colors={colorsProject} />
               </div>
             </div>
             <Button
-              message="Whats next?"
+              message="What's next?"
               target="extra"
               colors={colorsProject}
             />

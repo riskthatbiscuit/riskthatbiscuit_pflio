@@ -7,8 +7,22 @@ const fira = Fira_Code({
 });
 
 export const metadata: Metadata = {
-  title: 'Risk That Biscuit',
-  description: 'Software Engineering Portfolio',
+  title: 'Casey McGrath | Risk & Financial Software Engineer',
+  description:
+    'Portfolio for Casey McGrath, a risk manager turned software engineer building financial, operational-risk, and data tools.',
+  keywords: [
+    'Casey McGrath',
+    'software engineer',
+    'risk management',
+    'financial technology',
+    'portfolio',
+  ],
+  openGraph: {
+    title: 'Casey McGrath | Risk & Financial Software Engineer',
+    description:
+      'Risk manager turned software engineer building financial, operational-risk, and data tools.',
+    type: 'website',
+  },
 };
 
 export default function RootLayout({

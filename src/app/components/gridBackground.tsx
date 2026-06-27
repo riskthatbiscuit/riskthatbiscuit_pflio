@@ -15,7 +15,7 @@ export default function GridBackground({
   const numSquaresY = 10;
   const probability1 = 0.1;
   const probability2 = 0.2;
-  const id = `gridPattern-${colors[0]}`
+  const id = `gridPattern-${colors[0]}`;
 
   const intervalTime = 1000;
   const [gridSize, setGridSize] = useState(5000);
@@ -51,15 +51,14 @@ export default function GridBackground({
     );
   }, [colors, fillColors]);
 
-  
   // Initialize and set interval on component mount
   useEffect(() => {
     const handleResize = () => {
       const newSize =
-      window.innerWidth > 900 ? 200 : window.innerWidth > 400 ? 100 : 50;
+        window.innerWidth > 900 ? 200 : window.innerWidth > 400 ? 100 : 50;
       setGridSize(newSize);
     };
-    
+
     handleResize();
 
     const intervalId = setInterval(() => {
@@ -106,7 +105,7 @@ export default function GridBackground({
           <rect width="100%" height="100%" fill={`url(#${id})`} />
         </svg>
       </div>
-      {children}
+      <div className="relative z-10 h-full">{children}</div>
     </div>
   );
 }

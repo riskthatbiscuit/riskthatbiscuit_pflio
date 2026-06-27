@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useState, ReactElement, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
 import { useIsVisible } from '@/app/hooks/useIsVisible';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Button from '../button';
@@ -34,10 +34,9 @@ interface SkillsProps {
   colorsSkills: string[];
 }
 
-export default function Projects({ colorsSkills }: SkillsProps): JSX.Element {
+export default function Skills({ colorsSkills }: SkillsProps): JSX.Element {
   const ref2 = useRef<HTMLDivElement>(null);
   const isVisible = useIsVisible(ref2);
-  const [currentStack, setCurrentStack] = useState(0);
   const [showArrows, setShowArrows] = useState(false);
   const sliderRef = useRef<HTMLDivElement>(null);
   const color1 = colorsSkills[0];
@@ -66,78 +65,64 @@ export default function Projects({ colorsSkills }: SkillsProps): JSX.Element {
   const stacks = [
     {
       name: 'Core Programming',
-      body: 'Extensive experience in programming with a focus on backend and frontend.',
+      body: 'Languages and fundamentals I use to build practical web and data tools.',
       skills: [
-        { name: 'JavaScript', icon: <SiJavascript />, rating: 'proficient' },
-        { name: 'TypeScript', icon: <SiTypescript />, rating: 'proficient' },
-        { name: 'Python', icon: <FaPython />, rating: 'good' },
-        { name: 'VisualBasic', icon: <SiVisualbasic />, rating: 'good' },
-        { name: 'Java', icon: <FaJava />, rating: 'learning' },
+        { name: 'JavaScript', icon: <SiJavascript />, rating: 'strong' },
+        { name: 'TypeScript', icon: <SiTypescript />, rating: 'strong' },
+        { name: 'Python', icon: <FaPython />, rating: 'comfortable' },
+        {
+          name: 'Visual Basic',
+          icon: <SiVisualbasic />,
+          rating: 'comfortable',
+        },
+        { name: 'Java', icon: <FaJava />, rating: 'building' },
       ],
       bgColor: color1,
       textColor: color2,
     },
     {
       name: 'Front-end Development',
-      body: 'Proficient in modern front-end technologies and frameworks, with project experience.',
+      body: 'Interfaces for portfolio sites, dashboards, and full-stack apps.',
       skills: [
-        { name: 'React', icon: <FaReact />, rating: 'proficient' },
-        { name: 'TailwindCSS', icon: <SiTailwindcss />, rating: 'proficient' },
-        // { name: 'HTML5', icon: <FaHtml5 />, rating: 'proficient' },
-        { name: 'Bootstrap', icon: <FaBootstrap />, rating: 'good' },
-        { name: 'jQuery', icon: <SiJquery />, rating: 'good' },
+        { name: 'React', icon: <FaReact />, rating: 'strong' },
+        { name: 'TailwindCSS', icon: <SiTailwindcss />, rating: 'strong' },
+        { name: 'Bootstrap', icon: <FaBootstrap />, rating: 'comfortable' },
+        { name: 'jQuery', icon: <SiJquery />, rating: 'comfortable' },
       ],
       bgColor: color2,
       textColor: color1,
     },
     {
       name: 'Back-end & Data Processing',
-      body: 'Building and managing back-end services and data pipelines.',
+      body: 'APIs, persistence, and data processing behind business applications.',
       skills: [
-        { name: 'Node', icon: <FaNodeJs />, rating: 'proficient' },
-        { name: 'Express', icon: <SiExpress />, rating: 'proficient' },
-        { name: 'MongoDB', icon: <SiMongodb />, rating: 'proficient' },
-        { name: 'MySQL', icon: <SiMysql />, rating: 'good' },
-        { name: 'Kafka', icon: <SiApachekafka />, rating: 'learning' },
+        { name: 'Node.js', icon: <FaNodeJs />, rating: 'strong' },
+        { name: 'Express', icon: <SiExpress />, rating: 'strong' },
+        { name: 'MongoDB', icon: <SiMongodb />, rating: 'strong' },
+        { name: 'MySQL', icon: <SiMysql />, rating: 'comfortable' },
+        { name: 'Kafka', icon: <SiApachekafka />, rating: 'building' },
       ],
       bgColor: color1,
       textColor: color2,
     },
     {
       name: 'Cloud, DevOps & Infrastructure',
-      body: 'Skilled in cloud services, infrastructure as code, and version control systems.',
+      body: 'Deployment, version control, and infrastructure skills I am extending.',
       skills: [
-        { name: 'AWS', icon: <FaAws />, rating: 'learning' },
-        { name: 'Terraform', icon: <SiTerraform />, rating: 'learning' },
-        { name: 'GitHub', icon: <FaGithub />, rating: 'proficient' },
-        { name: 'GitLab', icon: <FaGitlab />, rating: 'learning' },
+        { name: 'AWS', icon: <FaAws />, rating: 'building' },
+        { name: 'Terraform', icon: <SiTerraform />, rating: 'building' },
+        { name: 'GitHub', icon: <FaGithub />, rating: 'strong' },
+        { name: 'GitLab', icon: <FaGitlab />, rating: 'building' },
       ],
       bgColor: color2,
       textColor: color1,
     },
-    // {
-    //   name: 'Software Development Practices',
-    //   body: 'Deep understanding of software development lifecycle, from design to deployment.',
-    //   skills: [
-    //     {
-    //       name: 'Microservices architecture',
-    //       icon: null,
-    //       rating: 'proficient',
-    //     },
-    //     { name: 'SDLC', icon: null, rating: 'proficient' },
-    //     { name: 'Agile methodologies', icon: null, rating: 'good' },
-    //   ],
-    //   bgColor: 'bg-gray-300',
-    //   textColor: 'text-neutral',
-    // },
     {
       name: 'Database Management & Streaming',
-      body: 'Handling large-scale data management and real-time data streaming.',
+      body: 'Structured data stores and analytics tooling for finance workflows.',
       skills: [
-        { name: 'PostgreSQL', icon: <SiPostgresql />, rating: 'learning' },
-        { name: 'Snowflake', icon: <SiSnowflake />, rating: 'learning' },
-        { name: '', icon: '', rating: 'good' },
-        { name: '', icon: '', rating: 'good' },
+        { name: 'PostgreSQL', icon: <SiPostgresql />, rating: 'building' },
+        { name: 'Snowflake', icon: <SiSnowflake />, rating: 'building' },
       ],
       bgColor: color1,
       textColor: color2,
@@ -147,10 +132,13 @@ export default function Projects({ colorsSkills }: SkillsProps): JSX.Element {
   function getRatingColor(rating: string) {
     switch (rating) {
       case 'proficient':
+      case 'strong':
         return 'bg-green-500'; // Green for proficient
       case 'good':
+      case 'comfortable':
         return 'bg-yellow-500'; // Yellow for good
       case 'learning':
+      case 'building':
         return 'bg-red-500'; // Red for learning
       default:
         return 'bg-gray-500'; // Default color
@@ -186,13 +174,16 @@ export default function Projects({ colorsSkills }: SkillsProps): JSX.Element {
                 {stacks.map((stack, index) => (
                   <div
                     key={stack.name}
-                    className="group relative mt-4 flex flex-col rounded-md min-w-56 bg-opacity-50 p-4"
+                    className="group relative mt-4 flex min-w-56 flex-col rounded-md bg-opacity-50 p-4"
                     style={{
                       backgroundColor: stack.bgColor,
                       color: stack.textColor,
                     }}
                   >
-                    <h2 className="mt-8 border-b-2 text-xl" style={{borderColor: stack.textColor}}>
+                    <h2
+                      className="mt-8 border-b-2 text-xl"
+                      style={{ borderColor: stack.textColor }}
+                    >
                       {stack.name}
                     </h2>
                     <p className="text-thin mt-2">{stack.body}</p>
@@ -233,18 +224,18 @@ export default function Projects({ colorsSkills }: SkillsProps): JSX.Element {
               <div className="mx-2 my-2 flex items-center justify-between gap-2 rounded-md bg-white bg-opacity-30 p-1 text-neutral">
                 <p>Key:</p>
                 <button className="h-8 rounded-md bg-green-500 bg-opacity-50 px-2">
-                  I&apos;m great at
+                  Strong
                 </button>
                 <button className="h-8 rounded-md bg-yellow-500 bg-opacity-50 px-2">
-                  I&apos;m good at
+                  Comfortable
                 </button>
                 <button className="h-8 rounded-md bg-red-500 bg-opacity-50 px-2">
-                  I&apos;m learning
+                  Building
                 </button>
               </div>
             </div>
             <Button
-              message="Whats next?"
+              message="Projects"
               target="projects"
               colors={colorsSkills}
             />
